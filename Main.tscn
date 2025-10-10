@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://cu8wwfa6sp08l"]
+[gd_scene load_steps=3 format=3 uid="uid://cu8wwfa6sp08l"]
+
+[ext_resource type="PackedScene" uid="uid://d3drj0bnctmug" path="res://Models/FPSARmsRIG.fbx" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://cnaqv4wu1aa2o" path="res://Models/Tablet.blend" id="2_uu6xs"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="FPSARmsRIG" parent="." instance=ExtResource("1_glv2v")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0851452, 0, -1.7385)
+
+[node name="Tablet2" parent="." instance=ExtResource("2_uu6xs")]
+transform = Transform3D(-1.18021e-08, -0.27, 0, 0.249012, -1.08847e-08, 0.104369, -0.104369, 4.56209e-09, 0.249012, 0.11737, 0.987385, -2.82083)
