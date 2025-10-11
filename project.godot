@@ -15,11 +15,18 @@ run/main_scene="uid://cu8wwfa6sp08l"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://Art/icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="ScreamJam2025"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

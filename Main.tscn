@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cu8wwfa6sp08l"]
+[gd_scene load_steps=21 format=3 uid="uid://cu8wwfa6sp08l"]
 
 [ext_resource type="PackedScene" uid="uid://cyn0jecmoh0jd" path="res://Prefabs/player.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://bipeqg1iuorlf" path="res://Art/hand2.png" id="2_r0du0"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c86mquyfvdqmu" path="res://Prefabs/bro.tscn" id="7_trn2v"]
 [ext_resource type="Script" uid="uid://d1mkrp3fgykue" path="res://Scripts/partSpawner.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://b47ntf8eyh80c" path="res://Art/axeHand.png" id="9_03owx"]
+[ext_resource type="Texture2D" uid="uid://dnl6aivenht6l" path="res://Art/Crosshair_4.png" id="12_5vvyt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
 
@@ -47,13 +48,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+up_vector_enabled = false
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Hand3" type="Sprite2D" parent="."]
-position = Vector2(243, 470)
-scale = Vector2(3, 3)
-texture = ExtResource("2_r0du0")
 
 [node name="Player" parent="." instance=ExtResource("2_20pc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441411, 0, 0)
@@ -200,6 +197,25 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.547
 curve = SubResource("Curve3D_03owx")
 
 [node name="AxeHand" type="Sprite2D" parent="."]
-position = Vector2(963.375, 365.93)
+position = Vector2(1389, 817)
 scale = Vector2(1.95207, 1.7807)
 texture = ExtResource("9_03owx")
+
+[node name="Hand3" type="Sprite2D" parent="."]
+position = Vector2(524, 893)
+scale = Vector2(3, 3)
+texture = ExtResource("2_r0du0")
+
+[node name="Crosshair" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Sprite2D" parent="Crosshair"]
+scale = Vector2(1.46, 1.46)
+texture = ExtResource("12_5vvyt")

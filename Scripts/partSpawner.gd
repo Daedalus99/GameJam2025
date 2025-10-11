@@ -3,7 +3,7 @@ extends Node3D
 @export var path: Path3D
 @export var scene_to_spawn: PackedScene = preload("res://Prefabs/Corpse.tscn")
 @export var conveyor_speed := 1.0
-@export var move_duration := 1.0
+@export var move_duration := 2.0
 @export var stop_duration := 1.0
 
 @onready var timer: Timer = $SpawnTimer
@@ -31,7 +31,7 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	# spawn
 	var corpse := scene_to_spawn.instantiate() as Corpse
-	corpse.rotate_y(randf_range(0.0, TAU))
+	corpse.visuals.rotate_y(randf_range(-PI/4, PI/4))
 	path.add_child(corpse)
 	corpse.speed = conveyor_speed
 	corpse.add_to_group("conveyor")

@@ -1,15 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://3mqq8i234aqc"]
+[gd_scene load_steps=3 format=3 uid="uid://3mqq8i234aqc"]
 
-[ext_resource type="Script" uid="uid://dqtev2qgivk1f" path="res://Prefabs/chopSpot.gd" id="1_yvp24"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2m5c"]
-emission_enabled = true
-emission = Color(0.85104, 0.000641487, 0.863016, 1)
-billboard_mode = 1
-
-[sub_resource type="TextMesh" id="TextMesh_n3i22"]
-material = SubResource("StandardMaterial3D_k2m5c")
-text = "Brain"
+[ext_resource type="Script" uid="uid://dqtev2qgivk1f" path="res://Scripts/chopSpot.gd" id="1_yvp24"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n3i22"]
 radius = 0.194642
@@ -18,9 +9,12 @@ radius = 0.194642
 script = ExtResource("1_yvp24")
 hotspot_id = "Brain"
 
-[node name="Highlight" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.368368, 0, -0.92968, 0, 1, 0, 0.92968, 0, 0.368368, 0, 0.217472, 0)
-mesh = SubResource("TextMesh_n3i22")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_n3i22")
+
+[node name="Highlight" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2367, 0)
+visible = false
+billboard = 1
+outline_modulate = Color(0.80495, 0.0180506, 1, 1)
+text = "Kachow"
