@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://1w6o13tpi4hd"]
+
+[ext_resource type="PackedScene" uid="uid://ckduhiyi2t7vw" path="res://Models/brain.blend" id="1_4w5wn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j42od"]
+albedo_color = Color(1, 0.530746, 0.98592, 1)
+
+[node name="brain" instance=ExtResource("1_4w5wn")]
+
+[node name="Brain" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_j42od")

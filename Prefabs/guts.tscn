@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://tiqk5n8m7h6d"]
+
+[ext_resource type="PackedScene" uid="uid://clv8afkh5vckl" path="res://Models/guts.blend" id="1_u4rv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovasp"]
+albedo_color = Color(0.256621, 0, 0.0683113, 1)
+
+[node name="guts" instance=ExtResource("1_u4rv0")]
+
+[node name="Guts" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_ovasp")

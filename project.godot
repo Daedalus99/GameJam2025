@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="ScreamJam2025"
+run/main_scene="uid://cu8wwfa6sp08l"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Art/icon.svg"
+
+[dotnet]
+
+project/assembly_name="ScreamJam2025"
 
 [rendering]
 

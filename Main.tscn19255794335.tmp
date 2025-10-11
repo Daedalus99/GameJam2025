@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cu8wwfa6sp08l"]
 
-[ext_resource type="PackedScene" uid="uid://cyn0jecmoh0jd" path="res://Prefabs/player.tscn" id="2_20pc6"]
+[ext_resource type="Script" uid="uid://do8712e7ohba1" path="res://Scripts/playerLook.gd" id="1_uu6xs"]
 [ext_resource type="Texture2D" uid="uid://bipeqg1iuorlf" path="res://Art/hand2.png" id="2_r0du0"]
 [ext_resource type="Texture2D" uid="uid://1gqnjaww4g8w" path="res://Art/icon.svg" id="3_r0du0"]
 [ext_resource type="Shader" uid="uid://dei0cc48t685c" path="res://scroll_uv.gdshader" id="4_wkp8b"]
@@ -24,6 +24,15 @@ sky = SubResource("Sky_uu6xs")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm0pq"]
 albedo_texture = ExtResource("3_r0du0")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20pc6"]
+render_priority = 0
+shader = ExtResource("4_wkp8b")
+shader_parameter/albedo_tex = ExtResource("5_20pc6")
+shader_parameter/scroll_speed = Vector2(0, -1)
+shader_parameter/drive = 0.1
+shader_parameter/uv_scale = Vector2(1, 10)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
 albedo_texture = ExtResource("3_r0du0")
 
@@ -31,15 +40,6 @@ albedo_texture = ExtResource("3_r0du0")
 albedo_color = Color(0.887814, 0.416422, 3.85046e-07, 1)
 emission_enabled = true
 emission = Color(1, 0.486275, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkp8b"]
-render_priority = 0
-shader = ExtResource("4_wkp8b")
-shader_parameter/albedo_tex = ExtResource("5_20pc6")
-shader_parameter/scroll_speed = Vector2(0, -1)
-shader_parameter/drive = 0.0
-shader_parameter/uv_scale = Vector2(1, 10)
-shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="Curve3D" id="Curve3D_03owx"]
 _data = {
@@ -55,8 +55,12 @@ position = Vector2(243, 470)
 scale = Vector2(3, 3)
 texture = ExtResource("2_r0du0")
 
-[node name="Player" parent="." instance=ExtResource("2_20pc6")]
+[node name="Player" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441411, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604, 0)
+script = ExtResource("1_uu6xs")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r0du0")
@@ -136,6 +140,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832462, 0.623274, -8.02981)
 material_override = SubResource("StandardMaterial3D_cm0pq")
 size = Vector3(4.02368, 0.560425, 2)
 
+[node name="Belt" type="CSGBox3D" parent="Room"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.975406, -0.219788, -5.57383)
+material_override = SubResource("ShaderMaterial_20pc6")
+size = Vector3(13.0112, 0.241211, 0.799643)
+
 [node name="Table" type="CSGBox3D" parent="Room"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0159312, -0.0319829, -0.053003)
 material_override = SubResource("StandardMaterial3D_trn2v")
@@ -185,18 +194,14 @@ transform = Transform3D(-0.0397484, 0, 0.0636008, 0, 0.075, 0, -0.0636008, 0, -0
 [node name="BodySpawner" type="Node3D" parent="." node_paths=PackedStringArray("path")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.919115, 0, -11.6387)
 script = ExtResource("8_trn2v")
-path = NodePath("Belt/Path3D")
+path = NodePath("Path3D")
+scene_to_spawn = null
 
-[node name="SpawnTimer" type="Timer" parent="BodySpawner"]
+[node name="Timer" type="Timer" parent="BodySpawner"]
 autostart = true
 
-[node name="Belt" type="CSGBox3D" parent="BodySpawner"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.056291, -0.219788, 6.06487)
-size = Vector3(13.0112, 0.241211, 0.799643)
-material = SubResource("ShaderMaterial_wkp8b")
-
-[node name="Path3D" type="Path3D" parent="BodySpawner/Belt"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.54733, 0.219788, -0.200024)
+[node name="Path3D" type="Path3D" parent="BodySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143733, 2.38419e-07, 11.6122)
 curve = SubResource("Curve3D_03owx")
 
 [node name="AxeHand" type="Sprite2D" parent="."]
