@@ -131,6 +131,7 @@ text = "x0"
 label_settings = SubResource("LabelSettings_bg4s2")
 
 [node name="PauseMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,7 +146,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.298039, 0, 0.470588, 0.290196)
+color = Color(0.0878524, 8.95412e-05, 0.157614, 0.290196)
 
 [node name="Buttons" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 1

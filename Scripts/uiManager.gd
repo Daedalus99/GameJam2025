@@ -8,6 +8,7 @@ extends Control
 @onready var exit_btn: Button = $PauseMenu/Buttons/ExitToMenuButton
 @onready var quit_btn: Button = $PauseMenu/Buttons/QuitButton
 @onready var counters_root: Node = get_node(counters_container)
+@export var beltAudioContainer: BeltAudio
 
 var counts := {}         # { "Heart": 0, ... }
 var labels := {}         # { "Heart": Label, ... }
@@ -34,11 +35,14 @@ func _pause_game() -> void:
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pause_menu.visible = true
+	beltAudioContainer.set_paused(true)
 
 func _resume_game() -> void:
 	get_tree().paused = false
 	pause_menu.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	beltAudioContainer.set_paused(false)
+
 
 func _on_resume_pressed() -> void: _resume_game()
 
@@ -55,7 +59,7 @@ func _build_counter_map() -> void:
 	if counters_root == null: return
 	for n in counters_root.get_children():
 		if n is Label:
-			var pt : String = str(n.get_meta("part_type")) if n.has_meta("part_type") else n.name
+			var pt : String = str(n.get_meta("part_type")) if n.has_meta("part_type") else str(n.name)
 			labels[pt] = n
 			counts[pt] = 0
 			_update_label(pt)

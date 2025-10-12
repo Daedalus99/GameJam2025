@@ -9,6 +9,9 @@ extends Node3D
 @onready var timer: Timer = $SpawnTimer
 @onready var belt: CSGBox3D = $Belt
 var belt_mat: ShaderMaterial
+var moving := false
+var phase := 0.0
+@export var speed_uv_per_sec := Vector2(0.0, -1.0)
 
 const SCROLL_SHADER: Shader = preload("res://scroll_uv.gdshader")
 
@@ -21,12 +24,18 @@ func _ready() -> void:
 		belt_mat.shader = SCROLL_SHADER
 	belt.material = belt_mat
 	# set UV scroll speed once
-	belt_mat.set_shader_parameter("scroll_speed", Vector2(0.0, -conveyor_speed))
-	belt_mat.set_shader_parameter("drive", 0.0)
+	belt_mat.set_shader_parameter("scroll_speed", speed_uv_per_sec)
+	belt_mat.set_shader_parameter("phase", phase)
 
 	timer.wait_time = move_duration + stop_duration
+	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
+	
+func _process(delta: float) -> void:
+	if moving and not get_tree().paused:
+		phase += delta
+		belt_mat.set_shader_parameter("phase", phase)
 
 func _on_timer_timeout() -> void:
 	# spawn
@@ -38,11 +47,14 @@ func _on_timer_timeout() -> void:
 
 	# move for N, then stop for N
 	_set_conveyor_drive(true)
-	await get_tree().create_timer(move_duration).timeout
+	await get_tree().create_timer(move_duration, false, false).timeout
+	#                 process_always=false, ignore_time_scale=false
 	_set_conveyor_drive(false)
 	# the timer itself enforces the stop duration until next spawn
 
 func _set_conveyor_drive(on: bool) -> void:
 	if belt_mat:
-		belt_mat.set_shader_parameter("drive", 1.0 if on else 0.0)
+		moving = on
+		#belt_mat.set_shader_parameter("drive", 1.0 if on else 0.0)
 	get_tree().call_group("conveyor", "set_drive", on)
+	$BeltAudio.set_drive(on)

@@ -392,7 +392,7 @@ script = ExtResource("18_5tuhn")
 sfx_on = ExtResource("19_3b0ty")
 sfx_loop = ExtResource("20_bg4s2")
 sfx_off = ExtResource("21_hhcpw")
-vdb = -15.56
+vdb = -20.0
 
 [node name="On" type="AudioStreamPlayer" parent="BodySpawner/BeltAudio"]
 
@@ -400,7 +400,6 @@ vdb = -15.56
 
 [node name="Shutdown" type="AudioStreamPlayer" parent="BodySpawner/BeltAudio"]
 
-[node name="UI" parent="." node_paths=PackedStringArray("beltAudioContainer") instance=ExtResource("18_kjvhd")]
-beltAudioContainer = NodePath("../BodySpawner/BeltAudio")
+[node name="UI" parent="." instance=ExtResource("18_kjvhd")]
 
 [editable path="Player"]
