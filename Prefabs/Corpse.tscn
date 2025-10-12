@@ -309,3 +309,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.0669155, -0.02
 hotspot_id = "Guts"
 modelSwap = NodePath("../../LowerCarved")
 baseModel = NodePath("../../Lower")
+
+[editable path="bro_corpse/ChopSpotContainer/ChopSpot"]

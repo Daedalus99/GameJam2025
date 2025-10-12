@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://cu8wwfa6sp08l"]
+[gd_scene load_steps=53 format=4 uid="uid://cu8wwfa6sp08l"]
 
 [ext_resource type="PackedScene" uid="uid://cyn0jecmoh0jd" path="res://Prefabs/player.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://khvhvmvf04oa" path="res://Art/floor01.png" id="2_c6i3y"]
@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://dbnd1n5y6d33l" path="res://Art/cash register/cash register_DefaultMaterial_Roughness.png" id="11_hhcpw"]
 [ext_resource type="Texture2D" uid="uid://dnl6aivenht6l" path="res://Art/Crosshair_4.png" id="12_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://diowkdn280lu8" path="res://Art/knife_hand.png" id="12_c6i3y"]
+[ext_resource type="Texture2D" uid="uid://7vwcwj06s2k1" path="res://Art/brain.png" id="20_devvj"]
+[ext_resource type="Texture2D" uid="uid://c3747cigckvxe" path="res://Art/heart.png" id="21_bg4s2"]
+[ext_resource type="Texture2D" uid="uid://w7gj7l65y6g3" path="res://Art/guts.png" id="22_hhcpw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
 
@@ -176,13 +179,15 @@ _data = {
 point_count = 3
 up_vector_enabled = false
 
+[sub_resource type="LabelSettings" id="LabelSettings_bg4s2"]
+font_size = 86
+outline_size = 25
+outline_color = Color(0.361214, 8.85606e-05, 0.361211, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_20pc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441411, 0, 0)
-
-[node name="RayCast3D" parent="Player/Camera3D" index="0"]
-target_position = Vector3(0, 0, -1.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r0du0")
@@ -396,6 +401,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Crosshair" type="TextureRect" parent="UI"]
 layout_mode = 1
@@ -410,6 +416,7 @@ offset_right = 12.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("12_5vvyt")
 stretch_mode = 3
 
@@ -426,6 +433,7 @@ offset_right = -507.0
 offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("11_5vvyt")
 
 [node name="KnifeHand" type="TextureRect" parent="UI"]
@@ -441,6 +449,49 @@ offset_right = 854.0
 offset_bottom = 143.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("12_c6i3y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("20_devvj")
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 9.0
+offset_right = 269.0
+offset_bottom = 127.0
+text = "x0"
+label_settings = SubResource("LabelSettings_bg4s2")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("21_bg4s2")
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/TextureRect2"]
+offset_left = 172.0
+offset_top = 41.0
+offset_right = 268.0
+offset_bottom = 159.0
+text = "x0"
+label_settings = SubResource("LabelSettings_bg4s2")
+
+[node name="TextureRect3" type="TextureRect" parent="UI/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("22_hhcpw")
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/TextureRect3"]
+offset_left = 172.0
+offset_top = 29.0
+offset_right = 268.0
+offset_bottom = 147.0
+text = "x0"
+label_settings = SubResource("LabelSettings_bg4s2")
 
 [editable path="Player"]

@@ -22,3 +22,4 @@ func activate() -> void:
 	print("Extracted ", hotspot_id)
 	modelSwap.visible = true
 	baseModel.visible = false
+	queue_free()
