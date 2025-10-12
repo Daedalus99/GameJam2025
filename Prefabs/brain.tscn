@@ -4,6 +4,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j42od"]
 albedo_color = Color(1, 0.530746, 0.98592, 1)
+roughness = 0.0
+rim_tint = 0.45
+clearcoat_roughness = 0.0
+refraction_scale = -0.87
 
 [node name="brain" instance=ExtResource("1_4w5wn")]
 

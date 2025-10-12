@@ -1,17 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://cu8wwfa6sp08l"]
+[gd_scene load_steps=37 format=3 uid="uid://cu8wwfa6sp08l"]
 
 [ext_resource type="PackedScene" uid="uid://cyn0jecmoh0jd" path="res://Prefabs/player.tscn" id="2_20pc6"]
-[ext_resource type="Texture2D" uid="uid://bipeqg1iuorlf" path="res://Art/hand2.png" id="2_r0du0"]
-[ext_resource type="Texture2D" uid="uid://1gqnjaww4g8w" path="res://Art/icon.svg" id="3_r0du0"]
+[ext_resource type="Texture2D" uid="uid://khvhvmvf04oa" path="res://Art/floor01.png" id="2_c6i3y"]
+[ext_resource type="Texture2D" uid="uid://0hvqbuicdqc7" path="res://Art/wall01.png" id="3_c2ibq"]
+[ext_resource type="Texture2D" uid="uid://8t65gmh5kr4f" path="res://Art/ceiling01.png" id="3_j4qnp"]
 [ext_resource type="Shader" uid="uid://dei0cc48t685c" path="res://scroll_uv.gdshader" id="4_wkp8b"]
 [ext_resource type="Texture2D" uid="uid://djhvgv264i6fu" path="res://Art/conveyor.png" id="5_20pc6"]
 [ext_resource type="PackedScene" uid="uid://1w6o13tpi4hd" path="res://Prefabs/brain.tscn" id="5_fos0i"]
 [ext_resource type="PackedScene" uid="uid://tiqk5n8m7h6d" path="res://Prefabs/guts.tscn" id="6_3dxm6"]
-[ext_resource type="PackedScene" uid="uid://dvbsh4tq2q34w" path="res://Prefabs/balls.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://blfa7bxo2c3k8" path="res://Prefabs/heart.tscn" id="6_5vvyt"]
 [ext_resource type="PackedScene" uid="uid://c86mquyfvdqmu" path="res://Prefabs/bro.tscn" id="7_trn2v"]
 [ext_resource type="Script" uid="uid://d1mkrp3fgykue" path="res://Scripts/partSpawner.gd" id="8_trn2v"]
-[ext_resource type="Texture2D" uid="uid://b47ntf8eyh80c" path="res://Art/axeHand.png" id="9_03owx"]
+[ext_resource type="Texture2D" uid="uid://cee2p8e86okcn" path="res://Art/left_hand.png" id="11_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://dnl6aivenht6l" path="res://Art/Crosshair_4.png" id="12_5vvyt"]
+[ext_resource type="Texture2D" uid="uid://diowkdn280lu8" path="res://Art/knife_hand.png" id="12_c6i3y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
 
@@ -19,26 +21,83 @@
 sky_material = SubResource("ProceduralSkyMaterial_uu6xs")
 
 [sub_resource type="Environment" id="Environment_r0du0"]
-background_mode = 2
 sky = SubResource("Sky_uu6xs")
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.474562, 0.419208, 8.66354e-07, 1)
+fog_density = 0.0135
+volumetric_fog_length = 19.48
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm0pq"]
-albedo_texture = ExtResource("3_r0du0")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4qnp"]
+albedo_texture = ExtResource("2_c6i3y")
+uv1_scale = Vector3(5, 5, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
-albedo_texture = ExtResource("3_r0du0")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mvff"]
+albedo_texture = ExtResource("3_j4qnp")
+uv1_scale = Vector3(10, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpfj3"]
+albedo_texture = ExtResource("3_c2ibq")
+uv1_scale = Vector3(2, 3.31, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sc1dx"]
+albedo_texture = ExtResource("3_c2ibq")
+uv1_scale = Vector3(2.005, 2.31, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvhd"]
+albedo_texture = ExtResource("3_c2ibq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tuhn"]
+albedo_texture = ExtResource("2_c6i3y")
+uv1_scale = Vector3(1.36, 6.575, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gh4u"]
+albedo_texture = ExtResource("2_c6i3y")
+uv1_scale = Vector3(1.345, 6.205, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_devvj"]
+albedo_texture = ExtResource("2_c6i3y")
+uv1_scale = Vector3(1.425, 8.11, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b0ty"]
+albedo_texture = ExtResource("3_c2ibq")
+uv1_scale = Vector3(3.32, 1.42, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg4s2"]
+albedo_texture = ExtResource("3_c2ibq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhcpw"]
+albedo_texture = ExtResource("3_c2ibq")
+uv1_scale = Vector3(3.18, 1.985, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxvw5"]
+albedo_texture = ExtResource("2_c6i3y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrxkg"]
+albedo_texture = ExtResource("2_c6i3y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqvbp"]
+albedo_texture = ExtResource("2_c6i3y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hri7i"]
+albedo_texture = ExtResource("2_c6i3y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3rk5"]
+albedo_texture = ExtResource("3_c2ibq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0du0"]
 albedo_color = Color(0.887814, 0.416422, 3.85046e-07, 1)
 emission_enabled = true
-emission = Color(1, 0.486275, 0, 1)
+emission = Color(0.584314, 0, 0, 1)
+emission_energy_multiplier = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wkp8b"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("4_wkp8b")
 shader_parameter/albedo_tex = ExtResource("5_20pc6")
 shader_parameter/scroll_speed = Vector2(0, -1)
-shader_parameter/drive = 0.0
+shader_parameter/drive = 0.355
+shader_parameter/brightness = 1.0
 shader_parameter/uv_scale = Vector2(1, 10)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -60,88 +119,99 @@ environment = SubResource("Environment_r0du0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.956269, 0.0536381, 0.287528, -0.192502, -0.624701, 0.756764, 0.22021, -0.77902, -0.587057, 0.100567, 0, -10.9354)
+shadow_enabled = true
 
 [node name="Room" type="Node3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24646, -1, -3.07145)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_j4qnp")
+size = Vector3(13.4753, 1, 12.8571)
+
+[node name="Floor2" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24646, 3.03613, -3.07145)
+material_override = SubResource("StandardMaterial3D_5mvff")
 size = Vector3(13.4753, 1, 12.8571)
 
 [node name="Wall" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42424, 1.50586, -3.54585)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_fpfj3")
 size = Vector3(1.10913, 6.01172, 11.9083)
 
 [node name="Wall2" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87507, 1.50586, -1.60531)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_sc1dx")
 size = Vector3(1.10913, 6.01172, 9.94151)
 
 [node name="Wall9" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.97135, 3.01932, -5.74434)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_kjvhd")
 size = Vector3(1.10913, 2.93378, 9.94151)
 
 [node name="Wall5" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04444, -0.712646, -5.20816)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_5tuhn")
 size = Vector3(0.247925, 1.57471, 9.94151)
 
 [node name="Wall6" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75086, -0.712646, -0.971758)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_2gh4u")
 size = Vector3(0.247925, 1.57471, 9.94151)
 
 [node name="Wall7" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34198, -0.712646, -6.36322)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_devvj")
 size = Vector3(0.247925, 1.57471, 9.94151)
 
 [node name="Wall3" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25703, 2.42334, -9.73972)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_3b0ty")
 size = Vector3(10.3452, 4.17676, 1.79306)
 
 [node name="Wall8" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68397, 1.50496, -9.84118)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_bg4s2")
 size = Vector3(8.77185, 4.17676, 1.79306)
 
 [node name="Wall4" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19844, 1.50586, 2.81931)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_hhcpw")
 size = Vector3(10.4624, 6.01172, 1.79306)
 
 [node name="Spawner" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.558902, -0.379425, -8)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_mxvw5")
 size = Vector3(3.83301, 0.24115, 2)
 
 [node name="Spawner3" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.537411, 0.191879, -8)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_xrxkg")
 size = Vector3(1.29614, 1.38376, 2)
 
 [node name="Spawner4" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46392, 0.191879, -8)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_sqvbp")
 size = Vector3(1.25391, 1.38376, 2)
+
+[node name="Spawner5" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63329, -0.619885, -12.3639)
+material_override = SubResource("StandardMaterial3D_sqvbp")
+size = Vector3(7.27918, 5.61083, 0.869019)
 
 [node name="Spawner2" type="CSGBox3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832462, 0.623274, -8.02981)
-material_override = SubResource("StandardMaterial3D_cm0pq")
+material_override = SubResource("StandardMaterial3D_hri7i")
 size = Vector3(4.02368, 0.560425, 2)
 
 [node name="Table" type="CSGBox3D" parent="Room"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0159312, -0.0319829, -0.053003)
-material_override = SubResource("StandardMaterial3D_trn2v")
+material_override = SubResource("StandardMaterial3D_w3rk5")
 size = Vector3(0.987488, 0.616821, 0.391706)
 
 [node name="Incinerator" type="CSGBox3D" parent="Room"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.01538, -0.858039, 1.46759)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.09985, -1.00979, 1.46759)
 material_override = SubResource("StandardMaterial3D_r0du0")
-size = Vector3(1.24472, 1.38605, 1.66656)
+size = Vector3(1.24472, 1.08255, 1.98048)
 
 [node name="bro6" parent="Room" instance=ExtResource("7_trn2v")]
 transform = Transform3D(0.998204, -0.0356223, 0.0481647, 0.0481637, -0.000886008, -0.99884, 0.0356237, 0.999365, 0.000831351, -2.1504, 0.125208, -4.39684)
@@ -170,14 +240,42 @@ transform = Transform3D(0.998204, -0.0356223, 0.0481647, 0.0481637, -0.000886008
 [node name="bro8" parent="Room" instance=ExtResource("7_trn2v")]
 transform = Transform3D(-0.105588, 0.994392, -0.00597343, 0.0481638, -0.000886009, -0.99884, -0.993244, -0.105753, -0.0478001, -0.754125, 0.125208, 0.151055)
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49473, 2.46774, -5.69266)
+light_color = Color(1, 0.950139, 0.751738, 1)
+shadow_enabled = true
+omni_range = 5.138
+omni_attenuation = 1.5
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49473, 2.46774, -0.192173)
+light_color = Color(1, 0.950139, 0.751738, 1)
+shadow_enabled = true
+omni_range = 5.138
+omni_attenuation = 1.5
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248622, 2.46774, -5.69266)
+light_color = Color(1, 0.950139, 0.751738, 1)
+shadow_enabled = true
+omni_range = 5.138
+omni_attenuation = 1.5
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248622, 2.46774, -0.192173)
+light_color = Color(1, 0.950139, 0.751738, 1)
+shadow_enabled = true
+omni_range = 5.138
+omni_attenuation = 1.5
+
 [node name="brain" parent="." instance=ExtResource("5_fos0i")]
 transform = Transform3D(0.498874, 0.46055, 0.734178, -0.0137558, 0.851222, -0.524625, -0.866565, 0.251622, 0.430988, -0.024776, 0.293038, -0.404544)
 
 [node name="guts" parent="." instance=ExtResource("6_3dxm6")]
 transform = Transform3D(0.345132, 0, 0.333593, 0, 0.48, 0, -0.333593, 0, 0.345132, 8.79765e-05, 0.280287, -0.052214)
 
-[node name="balls" parent="." instance=ExtResource("7_lgr22")]
-transform = Transform3D(-0.0397484, 0, 0.0636008, 0, 0.075, 0, -0.0636008, 0, -0.0397484, -0.00640643, 0.260248, 0.331056)
+[node name="Heart" parent="." instance=ExtResource("6_5vvyt")]
+transform = Transform3D(-0.539183, -0.0970474, 0.836578, 0.83599, -0.18197, 0.517695, 0.101992, 0.978503, 0.179246, 0.0281144, 0.301678, 0.216662)
 
 [node name="BodySpawner" type="Node3D" parent="." node_paths=PackedStringArray("path")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.919115, 0, -11.6387)
@@ -196,16 +294,6 @@ material = SubResource("ShaderMaterial_wkp8b")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.54733, 0.219788, -0.200024)
 curve = SubResource("Curve3D_03owx")
 
-[node name="AxeHand" type="Sprite2D" parent="."]
-position = Vector2(1389, 817)
-scale = Vector2(1.95207, 1.7807)
-texture = ExtResource("9_03owx")
-
-[node name="Hand3" type="Sprite2D" parent="."]
-position = Vector2(524, 893)
-scale = Vector2(3, 3)
-texture = ExtResource("2_r0du0")
-
 [node name="Crosshair" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -219,3 +307,15 @@ grow_vertical = 2
 [node name="Crosshair" type="Sprite2D" parent="Crosshair"]
 scale = Vector2(1.46, 1.46)
 texture = ExtResource("12_5vvyt")
+
+[node name="LeftHand" type="Sprite2D" parent="."]
+position = Vector2(319, 1057)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("11_5vvyt")
+
+[node name="KnifeHand" type="Sprite2D" parent="."]
+position = Vector2(1508, 779)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("12_c6i3y")
+
+[editable path="Player"]

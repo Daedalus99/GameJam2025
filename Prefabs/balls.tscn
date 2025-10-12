@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62fdq"]
 albedo_texture = ExtResource("2_7klg0")
 
-[node name="balls" instance=ExtResource("1_i6gvv")]
+[node name="Heart" instance=ExtResource("1_i6gvv")]
 
 [node name="Icosphere" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_62fdq")
