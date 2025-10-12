@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cu8wwfa6sp08l"]
+[gd_scene load_steps=52 format=4 uid="uid://cu8wwfa6sp08l"]
 
 [ext_resource type="PackedScene" uid="uid://cyn0jecmoh0jd" path="res://Prefabs/player.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://khvhvmvf04oa" path="res://Art/floor01.png" id="2_c6i3y"]
@@ -176,6 +176,9 @@ _data = {
 }
 point_count = 3
 up_vector_enabled = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3b0ty"]
+size = Vector3(0.320435, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -369,10 +372,11 @@ transform = Transform3D(0.345132, 0, 0.333593, 0, 0.48, 0, -0.333593, 0, 0.34513
 [node name="Heart" parent="." instance=ExtResource("6_5vvyt")]
 transform = Transform3D(-0.539183, -0.0970474, 0.836578, 0.83599, -0.18197, 0.517695, 0.101992, 0.978503, 0.179246, 0.018943, 0.301678, 0.288686)
 
-[node name="BodySpawner" type="Node3D" parent="." node_paths=PackedStringArray("path")]
+[node name="BodySpawner" type="Node3D" parent="." node_paths=PackedStringArray("path", "work_zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.919115, 0, -11.6387)
 script = ExtResource("8_trn2v")
 path = NodePath("Belt/Path3D")
+work_zone = NodePath("Belt/Workarea")
 speed_uv_per_sec = Vector2(0, -0.8)
 
 [node name="SpawnTimer" type="Timer" parent="BodySpawner"]
@@ -386,6 +390,13 @@ material = SubResource("ShaderMaterial_wkp8b")
 [node name="Path3D" type="Path3D" parent="BodySpawner/Belt"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.54733, 0.219788, -0.200024)
 curve = SubResource("Curve3D_03owx")
+
+[node name="Workarea" type="Area3D" parent="BodySpawner/Belt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63586, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodySpawner/Belt/Workarea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.339783, 0, 0)
+shape = SubResource("BoxShape3D_3b0ty")
 
 [node name="BeltAudio" type="Node" parent="BodySpawner"]
 script = ExtResource("18_5tuhn")

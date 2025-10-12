@@ -3,7 +3,7 @@ extends Area3D
 @export var hotspot_id: String = "Heart"
 @export var modelSwap: MeshInstance3D
 @export var baseModel: MeshInstance3D
-
+signal extracted
 @onready var highlight: Label3D =  $Highlight
 var armed := true
 
@@ -19,7 +19,8 @@ func activate() -> void:
 	armed = false
 	if is_instance_valid(highlight):
 		highlight.visible = false
-	print("Extracted ", hotspot_id)
+	extracted.emit(hotspot_id, "great?")
+	print("Harvested ", hotspot_id)
 	modelSwap.visible = true
 	baseModel.visible = false
 	queue_free()
