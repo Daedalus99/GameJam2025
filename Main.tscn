@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://cu8wwfa6sp08l"]
+[gd_scene load_steps=47 format=4 uid="uid://cu8wwfa6sp08l"]
 
 [ext_resource type="PackedScene" uid="uid://cyn0jecmoh0jd" path="res://Prefabs/player.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://khvhvmvf04oa" path="res://Art/floor01.png" id="2_c6i3y"]
@@ -16,13 +16,8 @@
 [ext_resource type="Script" uid="uid://d1mkrp3fgykue" path="res://Scripts/partSpawner.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://dhj62l5qmt8cg" path="res://Art/cash register/cash register_DefaultMaterial_Metallic.png" id="9_3b0ty"]
 [ext_resource type="Texture2D" uid="uid://bcwi5ascljlq4" path="res://Art/cash register/cash register_DefaultMaterial_Normal.png" id="10_bg4s2"]
-[ext_resource type="Texture2D" uid="uid://cee2p8e86okcn" path="res://Art/left_hand.png" id="11_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://dbnd1n5y6d33l" path="res://Art/cash register/cash register_DefaultMaterial_Roughness.png" id="11_hhcpw"]
-[ext_resource type="Texture2D" uid="uid://dnl6aivenht6l" path="res://Art/Crosshair_4.png" id="12_5vvyt"]
-[ext_resource type="Texture2D" uid="uid://diowkdn280lu8" path="res://Art/knife_hand.png" id="12_c6i3y"]
-[ext_resource type="Texture2D" uid="uid://7vwcwj06s2k1" path="res://Art/brain.png" id="20_devvj"]
-[ext_resource type="Texture2D" uid="uid://c3747cigckvxe" path="res://Art/heart.png" id="21_bg4s2"]
-[ext_resource type="Texture2D" uid="uid://w7gj7l65y6g3" path="res://Art/guts.png" id="22_hhcpw"]
+[ext_resource type="PackedScene" uid="uid://bdlgclq4e2pal" path="res://Prefabs/ui.tscn" id="18_kjvhd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
 
@@ -178,11 +173,6 @@ _data = {
 }
 point_count = 3
 up_vector_enabled = false
-
-[sub_resource type="LabelSettings" id="LabelSettings_bg4s2"]
-font_size = 86
-outline_size = 25
-outline_color = Color(0.361214, 8.85606e-05, 0.361211, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -393,105 +383,6 @@ material = SubResource("ShaderMaterial_wkp8b")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.54733, 0.219788, -0.200024)
 curve = SubResource("Curve3D_03owx")
 
-[node name="UI" type="Control" parent="."]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Crosshair" type="TextureRect" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.0
-offset_top = -11.0
-offset_right = 12.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("12_5vvyt")
-stretch_mode = 3
-
-[node name="LeftHand" type="TextureRect" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -771.0
-offset_top = -424.0
-offset_right = -507.0
-offset_bottom = 350.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-texture = ExtResource("11_5vvyt")
-
-[node name="KnifeHand" type="TextureRect" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 357.0
-offset_top = -922.0
-offset_right = 854.0
-offset_bottom = 143.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-texture = ExtResource("12_c6i3y")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("20_devvj")
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/TextureRect"]
-layout_mode = 0
-offset_left = 173.0
-offset_top = 9.0
-offset_right = 269.0
-offset_bottom = 127.0
-text = "x0"
-label_settings = SubResource("LabelSettings_bg4s2")
-
-[node name="TextureRect2" type="TextureRect" parent="UI/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("21_bg4s2")
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/TextureRect2"]
-offset_left = 172.0
-offset_top = 41.0
-offset_right = 268.0
-offset_bottom = 159.0
-text = "x0"
-label_settings = SubResource("LabelSettings_bg4s2")
-
-[node name="TextureRect3" type="TextureRect" parent="UI/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("22_hhcpw")
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/TextureRect3"]
-offset_left = 172.0
-offset_top = 29.0
-offset_right = 268.0
-offset_bottom = 147.0
-text = "x0"
-label_settings = SubResource("LabelSettings_bg4s2")
+[node name="UI" parent="." instance=ExtResource("18_kjvhd")]
 
 [editable path="Player"]
