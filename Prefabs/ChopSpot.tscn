@@ -18,3 +18,5 @@ visible = false
 billboard = 1
 outline_modulate = Color(0.80495, 0.0180506, 1, 1)
 text = "Kachow"
+font_size = 20
+outline_size = 5

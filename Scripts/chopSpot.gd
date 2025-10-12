@@ -1,6 +1,8 @@
 class_name ChopSpot
 extends Area3D
 @export var hotspot_id: String = "Heart"
+@export var modelSwap: MeshInstance3D
+@export var baseModel: MeshInstance3D
 
 @onready var highlight: Label3D =  $Highlight
 var armed := true
@@ -18,3 +20,5 @@ func activate() -> void:
 	if is_instance_valid(highlight):
 		highlight.visible = false
 	print("Extracted ", hotspot_id)
+	modelSwap.visible = true
+	baseModel.visible = false

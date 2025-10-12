@@ -159,7 +159,7 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_40n85")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wkp8b"]
-render_priority = 1
+render_priority = 2
 shader = ExtResource("4_wkp8b")
 shader_parameter/albedo_tex = ExtResource("5_20pc6")
 shader_parameter/scroll_speed = Vector2(0, -1)
@@ -180,6 +180,9 @@ up_vector_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("2_20pc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441411, 0, 0)
+
+[node name="RayCast3D" parent="Player/Camera3D" index="0"]
+target_position = Vector3(0, 0, -1.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r0du0")
@@ -351,9 +354,11 @@ transform = Transform3D(0.0507922, 0, 0.0193937, 0, 0.0686639, 0, -0.0893813, 0,
 mesh = SubResource("QuadMesh_2gh4u")
 
 [node name="Label3D" type="Label3D" parent="Room/Cash Register/Screen"]
-transform = Transform3D(0.662032, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231275, 0.0653731, 0.0520692)
+transform = Transform3D(0.662032, 0, 0, 0, 1, 0, 0, 0, 1, -0.328428, 0.156629, 0.0520692)
 modulate = Color(0, 1, 0, 1)
-text = "What the sigma?"
+text = "$69
+$420
+$67"
 font_size = 30
 autowrap_mode = 1
 
@@ -383,28 +388,59 @@ material = SubResource("ShaderMaterial_wkp8b")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.54733, 0.219788, -0.200024)
 curve = SubResource("Curve3D_03owx")
 
-[node name="Crosshair" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="UI"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 12.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Crosshair" type="Sprite2D" parent="Crosshair"]
-scale = Vector2(1.46, 1.46)
 texture = ExtResource("12_5vvyt")
+stretch_mode = 3
 
-[node name="LeftHand" type="Sprite2D" parent="."]
-position = Vector2(319, 1057)
-scale = Vector2(3.5, 3.5)
+[node name="LeftHand" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -771.0
+offset_top = -424.0
+offset_right = -507.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("11_5vvyt")
 
-[node name="KnifeHand" type="Sprite2D" parent="."]
-position = Vector2(1508, 779)
-scale = Vector2(3.5, 3.5)
+[node name="KnifeHand" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 357.0
+offset_top = -922.0
+offset_right = 854.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("12_c6i3y")
 
 [editable path="Player"]
