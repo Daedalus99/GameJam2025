@@ -8,9 +8,9 @@ class_name BeltAudio
 @export var vdb := -10.0
 @export var pause_with_game := true
 
-@onready var p_on:   AudioStreamPlayer = $On
-@onready var p_loop: AudioStreamPlayer = $Loop
-@onready var p_off:  AudioStreamPlayer = $Shutdown
+@onready var p_on:   AudioStreamPlayer3D = $On
+@onready var p_loop: AudioStreamPlayer3D = $Loop
+@onready var p_off:  AudioStreamPlayer3D = $Shutdown
 
 var moving := false
 
