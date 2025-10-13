@@ -43,7 +43,6 @@ func _resume_game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	beltAudioContainer.set_paused(false)
 
-
 func _on_resume_pressed() -> void: _resume_game()
 
 func _on_exit_pressed() -> void:

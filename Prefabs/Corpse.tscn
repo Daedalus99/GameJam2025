@@ -1,7 +1,9 @@
-[gd_scene load_steps=26 format=4 uid="uid://dddcd8wkprv27"]
+[gd_scene load_steps=28 format=4 uid="uid://dddcd8wkprv27"]
 
 [ext_resource type="Script" uid="uid://d3pm8bmsg3xqb" path="res://Scripts/corpse.gd" id="1_2pbn1"]
 [ext_resource type="PackedScene" uid="uid://3mqq8i234aqc" path="res://Prefabs/ChopSpot.tscn" id="3_64j50"]
+[ext_resource type="Resource" uid="uid://skn7is0bemqv" path="res://Resources/Harvestables/Brain.tres" id="3_dh7s4"]
+[ext_resource type="Resource" uid="uid://c162qo3hr10k8" path="res://Resources/Harvestables/Guts.tres" id="4_iun75"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34w5p"]
 albedo_color = Color(0, 0.212871, 0.0119479, 1)
@@ -299,22 +301,24 @@ transform = Transform3D(1.5748, 0, 0, 0, 1.5748, 0, 0, 0, 1.5748, 0, 0, 0.147973
 
 [node name="ChopSpot" parent="bro_corpse/ChopSpotContainer" node_paths=PackedStringArray("modelSwap", "baseModel") instance=ExtResource("3_64j50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.077608, -0.592635)
+harvestData = ExtResource("3_dh7s4")
 modelSwap = NodePath("../../HeadCarved")
 baseModel = NodePath("../../Head")
 
 [node name="ChopSpot2" parent="bro_corpse/ChopSpotContainer" node_paths=PackedStringArray("modelSwap", "baseModel") instance=ExtResource("3_64j50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0966999, -0.263546)
-hotspot_id = "Heart"
 modelSwap = NodePath("../../UpperCarved")
 baseModel = NodePath("../../Upper")
 
 [node name="ChopSpot3" parent="bro_corpse/ChopSpotContainer" node_paths=PackedStringArray("modelSwap", "baseModel") instance=ExtResource("3_64j50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.109286, 0.00244103)
-hotspot_id = "Guts"
+harvestData = ExtResource("4_iun75")
 modelSwap = NodePath("../../LowerCarved")
 baseModel = NodePath("../../Lower")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="RigidBody3D" parent="."]
+input_ray_pickable = false
+gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0221024, -0.0639648)

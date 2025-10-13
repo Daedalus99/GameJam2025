@@ -39,6 +39,7 @@ func _ready() -> void:
 
 	# zone
 	if work_zone:
+		print("Connecting Work Zone to on_zone_entered")
 		work_zone.body_entered.connect(_on_zone_entered)
 
 	_set_conveyor_drive(true)  # start moving
@@ -57,7 +58,9 @@ func _on_timer_timeout() -> void:
 	corpse.add_to_group("conveyor")
 
 func _on_zone_entered(body: Node) -> void:
+	print("Body Entered: ", body)
 	var n := body
+	#recursively get the parent to see if its the corpse root
 	while n and not (n is Corpse):
 		n = n.get_parent()
 	if n == null: return

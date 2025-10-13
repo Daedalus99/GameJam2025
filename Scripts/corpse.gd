@@ -5,6 +5,7 @@ extends PathFollow3D
 @export var chopSpotContainer : Node3D
 signal harvest_complete
 @export var remaining : int = 0
+
 # Conveyor belt
 @export var kill_at_end: bool = true
 @export var speed : float = 1.0
@@ -16,7 +17,7 @@ func _ready() -> void:
 	var spots = chopSpotContainer.get_children()
 	for s in spots:
 		if s.has_signal("extracted"):
-			s.connect("extracted", _on_spot_extracted) # (part_type, quality)
+			s.connect("extracted", _on_spot_extracted)
 			remaining += 1
 	rotation_mode = PathFollow3D.ROTATION_NONE  # or ROTATION_ORIENTED
 	loop = false
@@ -30,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	if kill_at_end and progress_ratio >= 1.0:
 		queue_free()
 
-func _on_spot_extracted(_pt, _q) -> void:
+func _on_spot_extracted(harvestData) -> void:
 	remaining -= 1
 	if remaining <= 0:
 		emit_signal("harvest_complete")

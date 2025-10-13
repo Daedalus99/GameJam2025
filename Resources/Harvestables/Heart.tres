@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="HarvestableData" load_steps=2 format=3 uid="uid://qe5u2tkouara"]
+
+[ext_resource type="Script" uid="uid://dnb7o46l8s5gi" path="res://Scripts/harvestableData.gd" id="1_i88go"]
+
+[resource]
+script = ExtResource("1_i88go")
+id = &"heart"
+display_name = "Heart"
+base_value = 100
+appraisal_mult = 1.0
+demand_tags = []
+freshness_half_life_sec = 60.0
+quality_mul = {
+"Intact": 0.85,
+"Nicked": 0.7,
+"Pristine": 1.0,
+"Ruined": 0.1
+}
+required_tool = 0
+yield_min = 1
+yield_max = 1
+weight = 1.0
+fragility = 0.3
+contamination_sensitivity = 0.2
+hazard_on_rupture = &""
+stacks = false
+max_stack = 1
+metadata/_custom_type_script = "uid://dnb7o46l8s5gi"

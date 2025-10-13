@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://3mqq8i234aqc"]
+[gd_scene load_steps=4 format=3 uid="uid://3mqq8i234aqc"]
 
 [ext_resource type="Script" uid="uid://dqtev2qgivk1f" path="res://Scripts/chopSpot.gd" id="1_yvp24"]
+[ext_resource type="Resource" uid="uid://qe5u2tkouara" path="res://Resources/Harvestables/Heart.tres" id="2_k2m5c"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n3i22"]
 radius = 0.194642
 
 [node name="ChopSpot" type="Area3D"]
 script = ExtResource("1_yvp24")
-hotspot_id = "Brain"
+harvestData = ExtResource("2_k2m5c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_n3i22")

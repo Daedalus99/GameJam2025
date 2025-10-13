@@ -1,6 +1,6 @@
 class_name ChopSpot
 extends Area3D
-@export var hotspot_id: String = "Heart"
+@export var harvestData: HarvestableData
 @export var modelSwap: MeshInstance3D
 @export var baseModel: MeshInstance3D
 signal extracted
@@ -8,7 +8,7 @@ signal extracted
 var armed := true
 
 func _ready() -> void:
-	highlight.text = hotspot_id
+	highlight.text = harvestData.display_name
 
 func set_hover(on: bool) -> void:
 	if is_instance_valid(highlight):
@@ -19,8 +19,8 @@ func activate() -> void:
 	armed = false
 	if is_instance_valid(highlight):
 		highlight.visible = false
-	extracted.emit(hotspot_id, "great?")
-	print("Harvested ", hotspot_id)
+	extracted.emit(harvestData)
+	print("Harvested ", harvestData.display_name)
 	modelSwap.visible = true
 	baseModel.visible = false
 	queue_free()
