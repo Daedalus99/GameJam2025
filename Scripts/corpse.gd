@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_spot_extracted(harvestData) -> void:
 	remaining -= 1
+	($Visuals/AudioStreamPlayer3D as AudioStreamPlayer3D).play()
 	if remaining <= 0:
 		workAreaCollider.queue_free()
 		emit_signal("harvest_complete")

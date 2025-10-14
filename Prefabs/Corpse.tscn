@@ -1,13 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://dddcd8wkprv27"]
+[gd_scene load_steps=10 format=3 uid="uid://dddcd8wkprv27"]
 
 [ext_resource type="Script" uid="uid://d3pm8bmsg3xqb" path="res://Scripts/corpse.gd" id="1_2pbn1"]
 [ext_resource type="PackedScene" uid="uid://bhlvgp50088fq" path="res://Models/bro_corpse.blend" id="2_iun75"]
 [ext_resource type="PackedScene" uid="uid://3mqq8i234aqc" path="res://Prefabs/ChopSpot.tscn" id="3_64j50"]
 [ext_resource type="Resource" uid="uid://skn7is0bemqv" path="res://Resources/Harvestables/Brain.tres" id="3_dh7s4"]
 [ext_resource type="Resource" uid="uid://c162qo3hr10k8" path="res://Resources/Harvestables/Guts.tres" id="4_iun75"]
+[ext_resource type="AudioStream" uid="uid://coq6r2nq23id5" path="res://SFX/squelch01.mp3" id="6_kdl85"]
+[ext_resource type="AudioStream" uid="uid://dopput4xcl4r" path="res://SFX/squelch02.mp3" id="7_ax6as"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nt42j"]
 size = Vector3(0.577881, 0.081955, 0.720704)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iun75"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("6_kdl85")
+stream_1/stream = ExtResource("7_ax6as")
 
 [node name="Corpse" type="PathFollow3D" node_paths=PackedStringArray("chopSpotContainer", "workAreaCollider", "visuals")]
 rotation_mode = 0
@@ -61,6 +69,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.109286, 0.0024
 harvestData = ExtResource("4_iun75")
 modelSwap = NodePath("../../bro_corpse2/LowerCarved")
 baseModel = NodePath("../../bro_corpse2/Lower")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197597, -0.166294)
+stream = SubResource("AudioStreamRandomizer_iun75")
 
 [editable path="Visuals/bro_corpse2"]
 [editable path="Visuals/ChopSpotContainer/ChopSpot"]
