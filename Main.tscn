@@ -379,6 +379,7 @@ transform = Transform3D(-0.539183, -0.0970474, 0.836578, 0.83599, -0.18197, 0.51
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.919115, 0, -11.6387)
 script = ExtResource("8_trn2v")
 path = NodePath("Belt/Path3D")
+conveyor_speed = 10.0
 work_zone = NodePath("Belt/Workarea")
 speed_uv_per_sec = Vector2(0, -0.8)
 
@@ -395,7 +396,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.547
 curve = SubResource("Curve3D_03owx")
 
 [node name="Workarea" type="Area3D" parent="BodySpawner/Belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86792, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31708, 0, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodySpawner/Belt/Workarea"]
