@@ -5,6 +5,7 @@ extends PathFollow3D
 @export var chopSpotContainer : Node3D
 signal harvest_complete
 @export var remaining : int = 0
+@export var workAreaCollider: PhysicsBody3D
 
 # Conveyor belt
 @export var kill_at_end: bool = true
@@ -34,4 +35,5 @@ func _physics_process(delta: float) -> void:
 func _on_spot_extracted(harvestData) -> void:
 	remaining -= 1
 	if remaining <= 0:
+		workAreaCollider.queue_free()
 		emit_signal("harvest_complete")

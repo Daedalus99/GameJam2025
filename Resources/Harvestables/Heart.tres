@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="HarvestableData" load_steps=2 format=3 uid="uid://qe5u2tkouara"]
+[gd_resource type="Resource" script_class="HarvestableData" load_steps=3 format=3 uid="uid://qe5u2tkouara"]
 
 [ext_resource type="Script" uid="uid://dnb7o46l8s5gi" path="res://Scripts/harvestableData.gd" id="1_i88go"]
+[ext_resource type="Texture2D" uid="uid://c3747cigckvxe" path="res://Art/heart.png" id="1_yadfp"]
 
 [resource]
 script = ExtResource("1_i88go")
@@ -25,4 +26,5 @@ contamination_sensitivity = 0.2
 hazard_on_rupture = &""
 stacks = false
 max_stack = 1
+icon = ExtResource("1_yadfp")
 metadata/_custom_type_script = "uid://dnb7o46l8s5gi"

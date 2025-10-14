@@ -15,7 +15,7 @@ var phase := 0.0
 @export var speed_uv_per_sec := Vector2(0.0, -1.0)
 const SCROLL_SHADER: Shader = preload("res://scroll_uv.gdshader")
 
-var active_corpse: Node = null
+var active_corpse: Corpse = null
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -66,12 +66,15 @@ func _on_zone_entered(body: Node) -> void:
 	if n == null: return
 	if active_corpse != null: return
 	active_corpse = n
+	timer.paused = true
+	active_corpse.chopSpotContainer.visible = true
 	_set_conveyor_drive(false)
 	(active_corpse as Corpse).harvest_complete.connect(_on_corpse_done.bind(active_corpse))
 
 func _on_corpse_done(done: Corpse) -> void:
 	if active_corpse == done:
 		active_corpse = null
+		timer.paused = false
 		_set_conveyor_drive(true)
 
 func _set_conveyor_drive(on: bool) -> void:

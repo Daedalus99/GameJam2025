@@ -1,29 +1,24 @@
 extends Control
 
 @export var main_menu_scene: PackedScene
-@export var counters_container: NodePath = ^"Counters"
+@onready var counter_ui: PackedScene = preload("res://Prefabs/harvestableCounter.tscn")
 
 @onready var pause_menu: Control = $PauseMenu
 @onready var resume_btn: Button = $PauseMenu/Buttons/ResumeButton
 @onready var exit_btn: Button = $PauseMenu/Buttons/ExitToMenuButton
 @onready var quit_btn: Button = $PauseMenu/Buttons/QuitButton
-@onready var counters_root: Node = get_node(counters_container)
 @export var beltAudioContainer: BeltAudio
 
-var counts := {}         # { "Heart": 0, ... }
-var labels := {}         # { "Heart": Label, ... }
+var inventory: Dictionary[String, int]
+@onready var itemCountersContainer : VBoxContainer = $Gameplay/ItemCounts
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS  # Godot 4
 	pause_menu.visible = false
-	_build_counter_map()
-
+	get_tree().node_added.connect(_on_node_added)
 	resume_btn.pressed.connect(_on_resume_pressed)
 	exit_btn.pressed.connect(_on_exit_pressed)
 	quit_btn.pressed.connect(_on_quit_pressed)
-
-	# Auto-connect to any ChopSpot entering the tree
-	get_tree().node_added.connect(_on_node_added)
 
 func _unhandled_input(e: InputEvent) -> void:
 	if e.is_action_pressed("ui_cancel"):
@@ -53,33 +48,21 @@ func _on_exit_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
-# --- Counters ---
-func _build_counter_map() -> void:
-	if counters_root == null: return
-	for n in counters_root.get_children():
-		if n is Label:
-			var pt : String = str(n.get_meta("part_type")) if n.has_meta("part_type") else str(n.name)
-			labels[pt] = n
-			counts[pt] = 0
-			_update_label(pt)
-
 func _on_node_added(n: Node) -> void:
-	# Support either signal name
+	# Auto-wire any ChopSpot-like node that emits `extracted`
+	# print("Node Added! %s" % n)
 	if n.has_signal("extracted"):
-		n.connect("extracted", _on_extracted)             # (part_type, quality)
-	elif n.has_signal("harvested"):
-		n.connect("harvested", _on_harvested)             # (part_type)
-
-func _on_extracted(part_type: String, _quality: String) -> void:
-	_inc(part_type)
-
-func _on_harvested(part_type: String) -> void:
-	_inc(part_type)
-
-func _inc(pt: String) -> void:
-	counts[pt] = counts.get(pt, 0) + 1
-	_update_label(pt)
-
-func _update_label(pt: String) -> void:
-	if labels.has(pt):
-		labels[pt].text = "%s: %d" % [pt, counts[pt]]
+		n.connect("extracted", Callable(self, "add_harvestable_to_inventory"))
+		
+func add_harvestable_to_inventory(h: HarvestableData):
+	print("Adding harvestable: %s" % h.id)
+	var new_count = inventory.get(h.id, 0) + h.choose_yield()
+	if h.id not in inventory:
+		print("Adding new counter UI for harvestable.")
+		var counterTex = counter_ui.instantiate() as TextureRect
+		counterTex.texture = h.icon
+		counterTex.name = h.id
+		itemCountersContainer.add_child(counterTex)
+	inventory[h.id] = new_count
+	(itemCountersContainer.find_child(h.id, true, false).get_child(0) as Label).text = "x%02d" % new_count 
+	

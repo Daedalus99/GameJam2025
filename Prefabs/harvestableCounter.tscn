@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp33q7wxpr71p"]
+
+[ext_resource type="Texture2D" uid="uid://7vwcwj06s2k1" path="res://Art/brain.png" id="1_n7nt3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bg4s2"]
+font_size = 86
+outline_size = 25
+outline_color = Color(0.361214, 8.85606e-05, 0.361211, 1)
+
+[node name="counterDisplay" type="TextureRect"]
+texture = ExtResource("1_n7nt3")
+
+[node name="amount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 9.0
+offset_right = 269.0
+offset_bottom = 127.0
+text = "x0"
+label_settings = SubResource("LabelSettings_bg4s2")

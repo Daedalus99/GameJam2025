@@ -1,17 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdlgclq4e2pal"]
+[gd_scene load_steps=7 format=3 uid="uid://bdlgclq4e2pal"]
 
 [ext_resource type="Script" uid="uid://d2ryc7dgeryju" path="res://Scripts/uiManager.gd" id="1_srcu5"]
 [ext_resource type="Texture2D" uid="uid://dnl6aivenht6l" path="res://Art/Crosshair_4.png" id="2_oaevd"]
 [ext_resource type="Texture2D" uid="uid://cee2p8e86okcn" path="res://Art/left_hand.png" id="3_weo7u"]
 [ext_resource type="Texture2D" uid="uid://bslb11xro8fkb" path="res://Art/knife_hand2.png" id="4_srcu5"]
-[ext_resource type="Texture2D" uid="uid://7vwcwj06s2k1" path="res://Art/brain.png" id="5_5bh6v"]
-[ext_resource type="Texture2D" uid="uid://c3747cigckvxe" path="res://Art/heart.png" id="6_k0meo"]
-[ext_resource type="Texture2D" uid="uid://w7gj7l65y6g3" path="res://Art/guts.png" id="7_vf106"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_bg4s2"]
-font_size = 86
-outline_size = 25
-outline_color = Color(0.361214, 8.85606e-05, 0.361211, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_hhcpw"]
 keycode = 4194305
@@ -29,7 +21,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_srcu5")
-counters_container = NodePath("Gameplay/VBoxContainer")
 
 [node name="Gameplay" type="Control" parent="."]
 anchors_preset = 0
@@ -85,50 +76,11 @@ grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("4_srcu5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Gameplay"]
+[node name="ItemCounts" type="VBoxContainer" parent="Gameplay"]
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 552.0
 scale = Vector2(0.5, 0.5)
-
-[node name="TextureRect" type="TextureRect" parent="Gameplay/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_5bh6v")
-
-[node name="Label" type="Label" parent="Gameplay/VBoxContainer/TextureRect"]
-layout_mode = 0
-offset_left = 173.0
-offset_top = 9.0
-offset_right = 269.0
-offset_bottom = 127.0
-text = "x0"
-label_settings = SubResource("LabelSettings_bg4s2")
-
-[node name="TextureRect2" type="TextureRect" parent="Gameplay/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_k0meo")
-
-[node name="Label" type="Label" parent="Gameplay/VBoxContainer/TextureRect2"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 41.0
-offset_right = 268.0
-offset_bottom = 159.0
-text = "x0"
-label_settings = SubResource("LabelSettings_bg4s2")
-
-[node name="TextureRect3" type="TextureRect" parent="Gameplay/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("7_vf106")
-
-[node name="Label" type="Label" parent="Gameplay/VBoxContainer/TextureRect3"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 29.0
-offset_right = 268.0
-offset_bottom = 147.0
-text = "x0"
-label_settings = SubResource("LabelSettings_bg4s2")
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false

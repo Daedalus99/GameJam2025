@@ -395,7 +395,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.547
 curve = SubResource("Curve3D_03owx")
 
 [node name="Workarea" type="Area3D" parent="BodySpawner/Belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63586, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86792, 0, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodySpawner/Belt/Workarea"]

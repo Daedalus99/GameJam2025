@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="HarvestableData" load_steps=2 format=3 uid="uid://c162qo3hr10k8"]
+[gd_resource type="Resource" script_class="HarvestableData" load_steps=3 format=3 uid="uid://c162qo3hr10k8"]
 
 [ext_resource type="Script" uid="uid://dnb7o46l8s5gi" path="res://Scripts/harvestableData.gd" id="1_i45un"]
+[ext_resource type="Texture2D" uid="uid://w7gj7l65y6g3" path="res://Art/guts.png" id="1_im63y"]
 
 [resource]
 script = ExtResource("1_i45un")
-id = &"heart"
-display_name = "Heart"
+id = &"guts"
+display_name = "Guts"
 base_value = 100
 appraisal_mult = 1.0
 demand_tags = []
@@ -25,4 +26,5 @@ contamination_sensitivity = 0.2
 hazard_on_rupture = &""
 stacks = false
 max_stack = 1
+icon = ExtResource("1_im63y")
 metadata/_custom_type_script = "uid://dnb7o46l8s5gi"

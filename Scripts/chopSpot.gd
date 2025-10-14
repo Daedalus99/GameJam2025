@@ -3,12 +3,13 @@ extends Area3D
 @export var harvestData: HarvestableData
 @export var modelSwap: MeshInstance3D
 @export var baseModel: MeshInstance3D
-signal extracted
+signal extracted(harvestable: HarvestableData)
 @onready var highlight: Label3D =  $Highlight
 var armed := true
 
 func _ready() -> void:
 	highlight.text = harvestData.display_name
+	highlight.no_depth_test = true          # draws even if slightly occluded
 
 func set_hover(on: bool) -> void:
 	if is_instance_valid(highlight):
