@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://cu8wwfa6sp08l"]
+[gd_scene load_steps=54 format=4 uid="uid://cu8wwfa6sp08l"]
 
 [ext_resource type="PackedScene" uid="uid://cyn0jecmoh0jd" path="res://Prefabs/player.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://khvhvmvf04oa" path="res://Art/floor01.png" id="2_c6i3y"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dhj62l5qmt8cg" path="res://Art/cash register/cash register_DefaultMaterial_Metallic.png" id="9_3b0ty"]
 [ext_resource type="Texture2D" uid="uid://bcwi5ascljlq4" path="res://Art/cash register/cash register_DefaultMaterial_Normal.png" id="10_bg4s2"]
 [ext_resource type="Texture2D" uid="uid://dbnd1n5y6d33l" path="res://Art/cash register/cash register_DefaultMaterial_Roughness.png" id="11_hhcpw"]
+[ext_resource type="AudioStream" uid="uid://dwcklhq0c622e" path="res://SFX/fan loop.mp3" id="12_hhcpw"]
+[ext_resource type="AudioStream" uid="uid://drl7vcx355sym" path="res://SFX/spooky loop.mp3" id="13_mxvw5"]
 [ext_resource type="Script" uid="uid://bmkcwpfyvim1a" path="res://Scripts/beltAudio.gd" id="18_5tuhn"]
 [ext_resource type="PackedScene" uid="uid://bdlgclq4e2pal" path="res://Prefabs/ui.tscn" id="18_kjvhd"]
 [ext_resource type="AudioStream" uid="uid://babvnnsfbu2mv" path="res://SFX/beltStart.mp3" id="19_3b0ty"]
@@ -365,6 +367,18 @@ $420
 $67"
 font_size = 30
 autowrap_mode = 1
+
+[node name="Ambient Audio" type="Node" parent="Room"]
+
+[node name="background fan" type="AudioStreamPlayer" parent="Room/Ambient Audio"]
+stream = ExtResource("12_hhcpw")
+volume_db = -15.0
+autoplay = true
+
+[node name="spooky loop" type="AudioStreamPlayer" parent="Room/Ambient Audio"]
+stream = ExtResource("13_mxvw5")
+volume_db = -10.0
+autoplay = true
 
 [node name="brain" parent="." instance=ExtResource("5_fos0i")]
 transform = Transform3D(0.498874, 0.46055, 0.734178, -0.0137558, 0.851222, -0.524625, -0.866565, 0.251622, 0.430988, 0.000750702, 0.293038, 0.965953)

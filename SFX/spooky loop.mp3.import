@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drl7vcx355sym"
+path="res://.godot/imported/spooky loop.mp3-f8f2b168f24b87a7f5fe911a1ec0ade5.mp3str"
+
+[deps]
+
+source_file="res://SFX/spooky loop.mp3"
+dest_files=["res://.godot/imported/spooky loop.mp3-f8f2b168f24b87a7f5fe911a1ec0ade5.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
