@@ -1,15 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://dddcd8wkprv27"]
+[gd_scene load_steps=22 format=3 uid="uid://dddcd8wkprv27"]
 
 [ext_resource type="Script" uid="uid://d3pm8bmsg3xqb" path="res://Scripts/corpse.gd" id="1_2pbn1"]
 [ext_resource type="PackedScene" uid="uid://bhlvgp50088fq" path="res://Models/bro_corpse.blend" id="2_iun75"]
 [ext_resource type="PackedScene" uid="uid://3mqq8i234aqc" path="res://Prefabs/ChopSpot.tscn" id="3_64j50"]
 [ext_resource type="Resource" uid="uid://skn7is0bemqv" path="res://Resources/Harvestables/Brain.tres" id="3_dh7s4"]
+[ext_resource type="Texture2D" uid="uid://8154mm8evgg1" path="res://Models/corpse_textures/lower0.png" id="3_flov6"]
 [ext_resource type="Resource" uid="uid://c162qo3hr10k8" path="res://Resources/Harvestables/Guts.tres" id="4_iun75"]
+[ext_resource type="Texture2D" uid="uid://bwk68xfoodymm" path="res://Models/corpse_textures/upper0.png" id="4_xgq4a"]
+[ext_resource type="Texture2D" uid="uid://basa22pajqthd" path="res://Models/corpse_textures/Head0.png" id="5_rxxf7"]
+[ext_resource type="Texture2D" uid="uid://b58mj7u0vhiwf" path="res://Models/corpse_textures/head1.png" id="6_cgsmq"]
 [ext_resource type="AudioStream" uid="uid://coq6r2nq23id5" path="res://SFX/squelch01.mp3" id="6_kdl85"]
 [ext_resource type="AudioStream" uid="uid://dopput4xcl4r" path="res://SFX/squelch02.mp3" id="7_ax6as"]
+[ext_resource type="Texture2D" uid="uid://dqk3wo28lwqfm" path="res://Models/corpse_textures/upper1.png" id="7_t36y1"]
+[ext_resource type="Texture2D" uid="uid://cj8w28ha02iq7" path="res://Models/corpse_textures/lower1.png" id="8_cx0gg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nt42j"]
 size = Vector3(0.577881, 0.081955, 0.720704)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcytr"]
+albedo_texture = ExtResource("3_flov6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c68ve"]
+albedo_texture = ExtResource("4_xgq4a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_he2mv"]
+albedo_texture = ExtResource("5_rxxf7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flov6"]
+albedo_texture = ExtResource("6_cgsmq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xgq4a"]
+albedo_texture = ExtResource("7_t36y1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxxf7"]
+albedo_texture = ExtResource("8_cx0gg")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iun75"]
 random_pitch = 1.2
@@ -40,14 +64,26 @@ shape = SubResource("BoxShape3D_nt42j")
 [node name="bro_corpse2" parent="Visuals" instance=ExtResource("2_iun75")]
 transform = Transform3D(0.65, 0, 0, 0, 0.649124, -0.0337351, 0, 0.0337351, 0.649124, 0, 0, -0.0821691)
 
+[node name="Lower" parent="Visuals/bro_corpse2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tcytr")
+
+[node name="Upper" parent="Visuals/bro_corpse2" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c68ve")
+
+[node name="Head" parent="Visuals/bro_corpse2" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_he2mv")
+
 [node name="HeadCarved" parent="Visuals/bro_corpse2" index="3"]
 visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_flov6")
 
 [node name="UpperCarved" parent="Visuals/bro_corpse2" index="4"]
 visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_xgq4a")
 
 [node name="LowerCarved" parent="Visuals/bro_corpse2" index="5"]
 visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_rxxf7")
 
 [node name="ChopSpotContainer" type="Node3D" parent="Visuals"]
 transform = Transform3D(0.999998, 0, 0, 0, 0.998524, -0.0542879, 0, 0.0542879, 0.998524, 0, -0.000800139, -0.00013864)

@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://c86mquyfvdqmu"]
+
+[ext_resource type="Script" uid="uid://crmsfphi21smc" path="res://Scripts/customer.gd" id="2_8mcxe"]
+[ext_resource type="Texture2D" uid="uid://7vwcwj06s2k1" path="res://Art/brain.png" id="3_8k6p4"]
+[ext_resource type="PackedScene" uid="uid://bhlvgp50088fq" path="res://Models/bro_corpse.blend" id="3_8mcxe"]
+[ext_resource type="Resource" uid="uid://b52h415rcjpeo" path="res://Resources/HarvestableDatabase.tres" id="3_lv06e"]
+[ext_resource type="Texture2D" uid="uid://1gqnjaww4g8w" path="res://Art/icon.svg" id="4_rtj5s"]
+[ext_resource type="Texture2D" uid="uid://bwk68xfoodymm" path="res://Models/corpse_textures/upper0.png" id="7_rktxr"]
+[ext_resource type="Texture2D" uid="uid://8154mm8evgg1" path="res://Models/corpse_textures/lower0.png" id="7_tllio"]
+[ext_resource type="Texture2D" uid="uid://basa22pajqthd" path="res://Models/corpse_textures/Head0.png" id="8_c3j78"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cl1g8"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_n3i22"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3j78"]
+albedo_texture = ExtResource("7_tllio")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3fql"]
+albedo_texture = ExtResource("7_rktxr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avdcv"]
+albedo_texture = ExtResource("8_c3j78")
+
+[node name="Customer" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("2_8mcxe")
+db = ExtResource("3_lv06e")
+
+[node name="Visuals" type="Node3D" parent="."]
+transform = Transform3D(0.665, 0, 0, 0, 0.665, 0, 0, 0, 0.665, 0, -0.0552876, -0.725552)
+
+[node name="Eye_R" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(0.040792, 0, 0, 0, 9.86403e-05, 1.50842, 0, -0.049146, 0.00302752, -0.0594725, 0.265704, -0.784685)
+material_override = SubResource("StandardMaterial3D_cl1g8")
+mesh = SubResource("QuadMesh_n3i22")
+skeleton = NodePath("../..")
+
+[node name="Eye_L" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(0.040792, 0, 0, 0, 9.86403e-05, 1.50842, 0, -0.049146, 0.00302752, 0.0586756, 0.265704, -0.784685)
+material_override = SubResource("StandardMaterial3D_cl1g8")
+mesh = SubResource("QuadMesh_n3i22")
+skeleton = NodePath("../..")
+
+[node name="Desire" type="Node3D" parent="Visuals"]
+
+[node name="HarvestableSprite" type="Sprite3D" parent="Visuals/Desire"]
+transform = Transform3D(0.295, 0, 0, 0, 0.295, 1.77636e-15, 0, -1.77636e-15, 0.295, 0.519109, -0.00384012, -0.749427)
+billboard = 1
+texture = ExtResource("3_8k6p4")
+
+[node name="SpriteBackground" type="Sprite3D" parent="Visuals/Desire"]
+transform = Transform3D(0.295, 0, 0, 0, 0.295, 1.77636e-15, 0, -1.77636e-15, 0.295, 0.519109, -0.0149871, -0.749427)
+modulate = Color(0, 0, 0, 0.537255)
+pixel_size = 0.0115
+billboard = 1
+texture = ExtResource("4_rtj5s")
+
+[node name="bro_corpse" parent="." instance=ExtResource("3_8mcxe")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -0.0120004, -0.0547889, -0.704193)
+
+[node name="Lower" parent="bro_corpse" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00245237)
+surface_material_override/0 = SubResource("StandardMaterial3D_c3j78")
+
+[node name="Upper" parent="bro_corpse" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00178594, 0.000615031, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_m3fql")
+
+[node name="Head" parent="bro_corpse" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0024538)
+surface_material_override/0 = SubResource("StandardMaterial3D_avdcv")
+
+[node name="HeadCarved" parent="bro_corpse" index="3"]
+visible = false
+
+[node name="UpperCarved" parent="bro_corpse" index="4"]
+visible = false
+
+[node name="LowerCarved" parent="bro_corpse" index="5"]
+visible = false
+
+[editable path="bro_corpse"]
