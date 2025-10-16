@@ -59,7 +59,7 @@ func _on_timer_timeout() -> void:
 	corpse.add_to_group("conveyor")
 
 func _on_zone_entered(body: Node) -> void:
-	print("Body Entered: ", body)
+	print("Corpse Entered Workzone: ", body)
 	var n := body
 	#recursively get the parent to see if its the corpse root
 	while n and not (n is Corpse):

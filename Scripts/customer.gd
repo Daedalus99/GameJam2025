@@ -1,4 +1,5 @@
-extends Node3D
+extends PathFollow3D
+class_name Customer
 @export var db: HarvestablesDB
 @export var list_size := 1
 var shopping_list: Array[HarvestableData] = []
