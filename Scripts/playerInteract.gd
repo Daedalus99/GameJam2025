@@ -18,5 +18,8 @@ func _physics_process(_dt: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var hit := ray.get_collider()
-		if hit and hit.has_method("activate"):
-			hit.activate()
+		if hit:
+			if hit.has_method("activate"):
+				hit.activate()
+			elif hit.owner and hit.owner.has_method("checkout"):
+				hit.owner.checkout()

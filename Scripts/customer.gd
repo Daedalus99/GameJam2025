@@ -3,6 +3,7 @@ class_name Customer
 @export var db: HarvestablesDB
 @export var list_size := 1
 var shopping_list: Array[HarvestableData] = []
+signal served()
 
 func _ready() -> void:
 	db.build_index()
@@ -18,5 +19,6 @@ func pick_random_list() -> void:
 		($Visuals/Desire/HarvestableSprite as Sprite3D).texture =  shopping_list[0].icon
 
 func checkout():
-	print("Cha-CHING!")
-	
+	print("Checking out customer!")
+	served.emit()
+	$Visuals/Desire.visible = false

@@ -1,7 +1,8 @@
 shader_type spatial;
 render_mode depth_draw_opaque;
 
-uniform sampler2D albedo_tex : source_color;
+
+uniform sampler2D albedo_tex : source_color, filter_nearest;
 
 uniform vec2 uv_scale = vec2(1.0);
 uniform vec2 uv_offset = vec2(0.0);

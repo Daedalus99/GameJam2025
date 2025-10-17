@@ -74,6 +74,8 @@ func _on_checkout_entered(body: Node) -> void:
 
 # call this when the current front customer is served
 func serve_front() -> void:
+	print("Front Customer is serving legend")
+	($"Cha-ching" as AudioStreamPlayer).play()
 	if carriers.size() == 0: return
 	var m := carriers[0]
 	state_by[m] = State.LEAVING
@@ -99,7 +101,7 @@ func _on_spawn_timer_timeout() -> void:
 
 	var cust := customerPrefab.instantiate()
 	mover.add_child(cust)
-
+	cust.served.connect(serve_front) # Should only be able to serve the customer in front...
 	carriers.append(mover)
 	print("Setting state to QUEUE")
 	state_by[mover] = State.QUEUE
@@ -107,7 +109,6 @@ func _on_spawn_timer_timeout() -> void:
 	_arm_spawn()
 
 # --- helpers ---
-
 func _forward_toward(a: float, b: float, d: float) -> float:
 	# Move forward toward b, never backward, clamp to [0, path_len].
 	if b <= a: return a
